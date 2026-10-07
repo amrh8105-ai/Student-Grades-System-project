@@ -43,10 +43,10 @@ void binarysearch (vector<student>& students , int n  , int y) {
             return ;
         }
         else if (students[m].id > y) {
-            s=m+1 ;
+            e=m-1 ;
         }
         else {
-            e=m-1;
+            s=m+1;
         }
 
     }
@@ -109,7 +109,7 @@ int main () {
             cin >> id;
             cout << "please enter the student grade" << endl;
             cin >> grade;
-            students.push_back(student(name,id,grade));
+            students.push_back({name, id, grade});
             cout << "student successfully added" << endl;
 
         }
@@ -165,12 +165,25 @@ int main () {
 
         }
         else if (choice == 5) {
-            cout << "the class average is: " << averageGrade(students) << endl;
+            if (students.size()==0) {
+                cout << "no students found" << endl;
+            }
+            else {
+                cout << "the class average is: " << averageGrade(students) << endl;
+            }
         }
         else if (choice == 6) {
-            bubbleSort(students, students.size());
-            int n = students.size();
-            cout <<"the best student is : " << students[0].name << " " << "||||" << "and the worst is : " << students[n-1].name << endl;
+
+            if (students.size()==0) {
+                cout << "no students found" << endl;
+            }
+            else {
+                bubbleSort(students, students.size());
+                int n = students.size();
+                cout <<"the best student is : " << students[0].name << " " << "||||" << "and the worst is : " << students[n-1].name << endl;
+            }
+
+
 
         }
         else if (choice == 7) {
@@ -184,6 +197,7 @@ int main () {
     }
     return 0;
 }
+
 
 
 
